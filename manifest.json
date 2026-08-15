@@ -1,0 +1,35 @@
+{
+  "manifest_version": 3,
+  "name": "B站逐字稿",
+  "version": "1.2.1",
+  "minimum_chrome_version": "116",
+  "description": "在 Chrome 侧边栏读取 B 站视频自带字幕，生成可跳转、复制和导出的逐字稿。",
+  "permissions": ["sidePanel", "tabs"],
+  "host_permissions": [
+    "https://www.bilibili.com/*",
+    "https://api.bilibili.com/*",
+    "https://*.hdslb.com/*"
+  ],
+  "action": {
+    "default_title": "打开 B站逐字稿",
+    "default_icon": {
+      "16": "icons/icon16.png",
+      "48": "icons/icon48.png",
+      "128": "icons/icon128.png"
+    }
+  },
+  "side_panel": { "default_path": "sidepanel.html" },
+  "background": { "service_worker": "background.js" },
+  "content_scripts": [
+    {
+      "matches": ["https://www.bilibili.com/video/*"],
+      "js": ["content.js"],
+      "run_at": "document_idle"
+    }
+  ],
+  "icons": {
+    "16": "icons/icon16.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  }
+}

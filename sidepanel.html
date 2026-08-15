@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>B站逐字稿</title>
+    <link rel="stylesheet" href="sidepanel.css" />
+  </head>
+  <body>
+    <header>
+      <div>
+        <p class="eyebrow">BILIBILI TRANSCRIPT</p>
+        <h1>B站逐字稿</h1>
+      </div>
+      <button id="refreshButton" class="icon-button" title="重新生成逐字稿" aria-label="重新生成逐字稿">↻</button>
+    </header>
+
+    <main>
+      <section id="welcome" class="state-card">
+        <div class="state-icon">CC</div>
+        <h2>按需生成逐字稿</h2>
+        <p>平时浏览不会读取字幕。遇到感兴趣的视频时，再点击下方按钮。</p>
+        <button id="generateButton" class="primary-button">生成当前视频逐字稿</button>
+      </section>
+
+      <section id="loading" class="state-card hidden" aria-live="polite">
+        <div class="spinner"></div>
+        <h2>正在读取字幕</h2>
+        <p>首次读取可能需要几秒钟。</p>
+      </section>
+
+      <section id="error" class="state-card hidden" aria-live="polite">
+        <div class="state-icon warning">!</div>
+        <h2>无法生成逐字稿</h2>
+        <p id="errorMessage"></p>
+        <button id="retryButton" class="primary-button">重试</button>
+      </section>
+
+      <section id="result" class="hidden">
+        <div class="video-card">
+          <h2 id="videoTitle"></h2>
+          <p><span id="videoOwner"></span><span id="languageBadge" class="badge"></span></p>
+          <p id="sourceInfo" class="source-info"></p>
+        </div>
+        <div class="toolbar">
+          <button id="copyButton" class="secondary-button">复制逐字稿</button>
+          <button id="downloadButton" class="primary-button">导出 TXT</button>
+        </div>
+        <p id="status" class="status" aria-live="polite"></p>
+        <div id="transcriptList" class="transcript-list"></div>
+      </section>
+    </main>
+    <script src="sidepanel.js"></script>
+  </body>
+</html>
